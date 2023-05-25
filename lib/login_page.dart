@@ -1,3 +1,9 @@
+
+import 'package:fluttersample/auth_controller.dart';
+
+import 'sign_up.dart';
+import "package:get/get.dart";
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -9,7 +15,9 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
+    var emailcont=TextEditingController();
+    var passcont=TextEditingController();
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -36,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 Text(
-                  "please Register",
+                  "please login",
                   style: TextStyle(
                     fontSize: 25,
                     color: Colors.grey,
@@ -58,7 +66,10 @@ class _LoginPageState extends State<LoginPage> {
                         )
                       ]),
                   child: TextField(
+                    controller:emailcont,
                     decoration: InputDecoration(
+                      hintText:"EMAIL",
+                      prefixIcon:Icon(Icons.email,color:Colors.blue),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
                         borderSide: BorderSide(
@@ -88,7 +99,11 @@ class _LoginPageState extends State<LoginPage> {
                         )
                       ]),
                   child: TextField(
+                    controller: passcont,
+                    obscureText: true,
                     decoration: InputDecoration(
+                      hintText:"PASSWORD",
+                      prefixIcon:Icon(Icons.password,color:Colors.orange),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
                         borderSide: BorderSide(
@@ -122,7 +137,9 @@ class _LoginPageState extends State<LoginPage> {
         SizedBox(
           height: 30,
         ),
-        Container(
+        GestureDetector(
+          onTap:(){AuthController.instance.login(emailcont.text.trim(),passcont.text.trim());},
+          child:Container(
           //container for image display
           width: 250,
           height: 40,
@@ -132,16 +149,36 @@ class _LoginPageState extends State<LoginPage> {
                   image: AssetImage("img/dp.png"), fit: BoxFit.cover)),
           child: Center(
             child: Text(
-              "Register",
+              "login",
               style: TextStyle(
                 fontSize: 36,
                 // fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),
             ),
-          ),
+          ),),
         ),
-        SizedBox(height: 20,),
+        SizedBox(
+          height: 20,
+        ),
+        RichText(
+            text: TextSpan(
+                text: "Don't have an account yet?",
+                style: TextStyle(
+                  color: Colors.grey[400],
+                  fontSize: 15,
+                ),
+                children: [
+              TextSpan(
+                  text: "Create!",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  recognizer: TapGestureRecognizer()..onTap=()=>Get.to(()=>SignUpPage())
+                  )
+            ]))
       ]),
     );
   }
