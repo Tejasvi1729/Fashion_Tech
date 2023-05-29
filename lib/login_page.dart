@@ -19,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     List images=[
-      "img/google_logo.png","img\fb_logo.png",
+      "img/google_logo.png","img/fb_logo.png",
     ];
      bool passenable = true; 
     return Scaffold(
@@ -180,30 +180,27 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ]
           ),
-          SizedBox(height: 40,),
-            Text(
-              "alternative",),
-          // Wrap(
-          //         children:List<Widget>.generate(
-          //           2, 
-          //           (index){
-          //             return Padding(
-          //               padding: const EdgeInsets.all(10.0),
-          //               child:CircleAvatar(
-          //               radius: 30,
-          //               backgroundColor: Colors.white,
-          //               child: CircleAvatar(
-      //                     radius: 25,
-      //                     backgroundImage:AssetImage(
-      //                       images[index],
-      //                     ),
-      //                   ),
-      //                 ));
-      //               }
-      //             )
-      //           )
-      // ),
-      ],));
-      // );
+          Wrap(
+                  children:List<Widget>.generate(
+                    2, 
+                    (index){
+                      return Padding(
+                        padding: const EdgeInsets.only(top:25,left:30.0,right:30.0),
+                        child:CircleAvatar(
+                        radius: 27,
+                        backgroundColor: Colors.white,
+                        child: CircleAvatar(
+                          radius: 25,
+                          backgroundImage:AssetImage(
+                            images[index],
+                          ),
+                        ),
+                      ));
+                    }
+                  )
+                )
+          ],
+      ),
+      );
   }
 }
