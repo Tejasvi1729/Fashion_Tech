@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttersample/auth_controller.dart';
+// import 'package:fluttersample/auth_controller.dart';
 
 class WelcomePage extends StatelessWidget {
-  String email;
-  WelcomePage({Key?key, required this.email}) : super(key: key);
+  // String email;
+  // WelcomePage({Key?key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,15 +36,16 @@ class WelcomePage extends StatelessWidget {
               ))),
               SizedBox(height: 20,),
               Text(
-                email,
+                "email",
                 style: TextStyle(fontSize: 20,color: Colors.pink),
               ),
           SizedBox(
             height: 30,
           ),
-          GestureDetector(
-          onTap:(){AuthController.instance.logout();},
-          child:Container(
+          // GestureDetector(
+          // onTap:(){AuthController.instance.logout();},
+          // child:
+          Container(
             //container for image display
             width: 200,
             height: 40,
@@ -62,7 +63,8 @@ class WelcomePage extends StatelessWidget {
                 ),
               ),
             ),
-          ),),
+          ),
+          // ),
         ],
       ),
     );

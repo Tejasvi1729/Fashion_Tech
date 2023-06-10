@@ -1,11 +1,9 @@
-
-import 'package:fluttersample/auth_controller.dart';
+// import 'package:fluttersample/auth_controller.dart';
 
 import 'sign_up.dart';
 import "package:get/get.dart";
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -20,115 +18,104 @@ class _LoginPageState extends State<LoginPage> {
     var passcont=TextEditingController();
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
+    List images=[
+      "img/google_logo.png","img/fb_logo.png",
+    ];
+     bool passenable = true; 
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 235, 221, 221),
+      backgroundColor: Color.fromRGBO(199, 191, 191, 1),
       body: Column(children: [
-        Container(
-          //container for image display
-          width: w,
-          height: h * 0.05,
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("img/dp.png"), fit: BoxFit.cover)),
-        ),
+        // Container(
+        //   //container for image display
+        //   width: w,
+        //   height: h * 0.05,
+        //   decoration: BoxDecoration(
+        //       image: DecorationImage(
+        //           image: AssetImage("img/dp.png"), fit: BoxFit.cover)),
+        // ),
         Container(
             margin: const EdgeInsets.only(left: 20, right: 20),
             width: w,
             child: Column(
               children: [
-                Text(
-                  "Hello",
-                  style: TextStyle(
-                    fontSize: 76,
-                    fontWeight: FontWeight.bold,
+                Padding(
+                    padding: EdgeInsets.only(left:(0.62*w),top: 64),
+                    child:Text(
+                    "Sign up",
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Color.fromARGB(161,141,116,1),
+                      fontFamily: 'Maitree',
+                      fontWeight: FontWeight.w300,
+                    ),
                   ),
                 ),
-                Text(
-                  "please login",
-                  style: TextStyle(
-                    fontSize: 25,
-                    color: Colors.grey,
+                SizedBox(height: 8,),
+                Padding(
+                    padding: EdgeInsets.only(right:w*0.65),
+                    child:
+                    Text(
+                    // textAlign: TextAlign.left,
+                    "Log in",
+                    style: TextStyle(
+                      fontSize: 31,
+                      color: Color.fromARGB(161,141,116,1),
+                      fontFamily: 'Maitree',
+                      fontWeight: FontWeight.w300,
+                    ),
                   ),
                 ),
                 SizedBox(
-                  height: 50,
+                  height: 40,
                 ),
                 Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(30),
-                      boxShadow: [
-                        BoxShadow(
-                          spreadRadius: 7,
-                          blurRadius: 10,
-                          offset: Offset(1, 1),
-                          color: Colors.grey.withOpacity(0.35),
-                        )
-                      ]),
                   child: TextField(
                     controller:emailcont,
                     decoration: InputDecoration(
-                      hintText:"EMAIL",
-                      prefixIcon:Icon(Icons.email,color:Colors.blue),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30),
-                        borderSide: BorderSide(
-                          color: Colors.white,
-                          width: 1.0,
-                        ),
+                      hintText:"Email/Phone Number",
+                      hintStyle: TextStyle(color:Color.fromARGB(161,141,116,1),
                       ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30),
+                      enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:Color.fromARGB(161,141,116,1)),
                       ),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 45,
                 ),
                 Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(30),
-                      boxShadow: [
-                        BoxShadow(
-                          spreadRadius: 7,
-                          blurRadius: 10,
-                          offset: Offset(1, 1),
-                          color: Colors.grey.withOpacity(0.35),
-                        )
-                      ]),
                   child: TextField(
-                    controller: passcont,
-                    obscureText: true,
+                    obscureText: passenable,
+                    controller:passcont,
                     decoration: InputDecoration(
-                      hintText:"PASSWORD",
-                      prefixIcon:Icon(Icons.password,color:Colors.orange),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30),
-                        borderSide: BorderSide(
-                          color: Colors.white,
-                          width: 1.0,
-                        ),
+                      // suffix: IconButton(onPressed: (){ //add Icon button at end of TextField
+                      //                 setState(() { //refresh UI
+                      //                     if(passenable){ //if passenable == true, make it false
+                      //                        passenable = false;
+                      //                     }else{
+                      //                        passenable = true; //if passenable == false, make it true
+                      //                     }
+                      //                 });
+                      //         }, icon: Icon(passenable == true?Icons.remove_red_eye:Icons.password)),
+                      hintText:"Password",
+                      hintStyle: TextStyle(color:Color.fromRGBO(161,141,116,1),
                       ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30),
+                      enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:Color.fromARGB(161,141,116,1)),
                       ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 20,
                 ),
                 Row(children: [
                   Expanded(
                     child: Container(),
                   ),
                   Text(
-                    "forgot your password?",
+                    "forgot password?",
                     style: TextStyle(
-                      fontSize: 25,
-                      color: Colors.grey,
+                      fontSize: 16,
+                      color: Color.fromARGB(161,141,116,1),
+                      fontFamily: 'Maitree',
+                      fontWeight: FontWeight.w200,
                     ),
                   ),
                 ]),
@@ -137,49 +124,83 @@ class _LoginPageState extends State<LoginPage> {
         SizedBox(
           height: 30,
         ),
-        GestureDetector(
-          onTap:(){AuthController.instance.login(emailcont.text.trim(),passcont.text.trim());},
-          child:Container(
+        // GestureDetector(
+          // onTap:(){AuthController.instance.login(emailcont.text.trim(),passcont.text.trim());},
+          // child:
+          Container(
           //container for image display
           width: 250,
-          height: 40,
+          height: 45,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(35),
-              image: DecorationImage(
-                  image: AssetImage("img/dp.png"), fit: BoxFit.cover)),
+              borderRadius: BorderRadius.circular(10),
+              color: Color.fromRGBO(161,141,116,1),
+               boxShadow: [BoxShadow(blurRadius: 0.5,),],
+          ),
           child: Center(
             child: Text(
               "login",
               style: TextStyle(
-                fontSize: 36,
-                // fontWeight: FontWeight.bold,
+                fontSize: 25,
+                fontWeight: FontWeight.w600,
                 color: Colors.white,
+                fontFamily: 'Maitree',
+                // backgroundColor: Color.fromRGBO(161,141,116,1),
               ),
             ),
           ),),
-        ),
-        SizedBox(
-          height: 20,
-        ),
-        RichText(
-            text: TextSpan(
-                text: "Don't have an account yet?",
-                style: TextStyle(
-                  color: Colors.grey[400],
-                  fontSize: 15,
-                ),
-                children: [
-              TextSpan(
-                  text: "Create!",
-                  style: TextStyle(
+        // ),
+        SizedBox(height: 20,),
+       Row(children: <Widget>[
+            Expanded(
+              child: new Container(
+                  margin: const EdgeInsets.only(left: 10.0, right: 13.0),
+                  child: Divider(
                     color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  recognizer: TapGestureRecognizer()..onTap=()=>Get.to(()=>SignUpPage())
+                    height: 50,
+                  )),
+            ),
+ 
+            Text(
+              "OR",
+              style: TextStyle(
+                      fontSize: 20,
+                      color: Color.fromARGB(161,141,116,1),
+                      fontFamily: 'Maitree',
+                      fontWeight: FontWeight.w400,
+                    ),
+            ),
+ 
+            Expanded(
+              child: new Container(
+                  margin: const EdgeInsets.only(left: 13.0, right: 10.0),
+                  child: Divider(
+                    color: Colors.black,
+                    height: 50,
+                  )),
+            ),
+          ]
+          ),
+          Wrap(
+                  children:List<Widget>.generate(
+                    2, 
+                    (index){
+                      return Padding(
+                        padding: const EdgeInsets.only(top:25,left:30.0,right:30.0),
+                        child:CircleAvatar(
+                        radius: 27,
+                        backgroundColor: Colors.white,
+                        child: CircleAvatar(
+                          radius: 25,
+                          backgroundImage:AssetImage(
+                            images[index],
+                          ),
+                        ),
+                      ));
+                    }
                   )
-            ]))
-      ]),
-    );
+                )
+          ],
+      ),
+      );
   }
 }

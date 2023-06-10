@@ -17,13 +17,13 @@ class AuthController extends GetxController{
     super.onReady();
     _user=Rx<User?>(auth.currentUser);
     _user.bindStream(auth.userChanges());
-    ever(_user,_initialScreen);
+    // ever(_user,_initialScreen);
   }
 
-  _initialScreen(User? user){//try adding void in front of it
-    if(user==null){print("Login Page");Get.offAll(()=>LoginPage());}
-    else{Get.offAll(()=>WelcomePage(email:user.email.toString()));}
-  }
+  // _initialScreen(User? user){//try adding void in front of it
+  //   if(user==null){print("Login Page");Get.offAll(()=>LoginPage());}
+  //   else{Get.offAll(()=>WelcomePage());}
+  // }
   void register(String emaili,pass)async{
     try{
       await auth.createUserWithEmailAndPassword(email: emaili, password: pass);
