@@ -84,7 +84,7 @@ class FirstRoute extends StatelessWidget {
                   SizedBox(width: 13,),
               CircleAvatar(
                 // padding: const EdgeInsets.all(0),
-                    radius: 42,
+                    radius: 42, 
                     backgroundImage:AssetImage(
                             './img/dp.png',
                           ),
@@ -512,6 +512,15 @@ Timer scheduleTimeout([int milliseconds = 10000]) =>
 void handleTimeout() {  // callback function
   // Do some work.
   DialogWarning();
+}
+
+
+Timer scheduleTimeout2([int milliseconds = 10000]) =>
+    Timer(Duration(milliseconds: milliseconds), handleTimeout);
+
+void handleTimeout2(context) {  // callback function
+  // Do some work.
+  Navigator.pop(context);
 }
 class DialogWarning extends StatelessWidget {
   const DialogWarning({super.key});
