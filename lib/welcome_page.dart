@@ -6,8 +6,7 @@ class WelcomePage extends StatelessWidget {
   // String email;
   // WelcomePage({Key?key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
+  @override  Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
 
